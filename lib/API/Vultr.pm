@@ -69,6 +69,34 @@ sub new {
     return bless( __PACKAGE__, $self );
 }
 
+# ACCOUNT #
+
+sub get_account_info {
+    my $self = shift;
+    return $self->_request( 'get', $self->_make_uri('/account') );
+}
+
+# APPLICATIONS #
+
+sub get_applications {
+    my $self = shift;
+    return $self->_request( 'get', $self->_make_uri('/applications') );
+}
+
+# BACKUPS #
+
+sub get_backups {
+    my ( $self, %query ) = @_;
+    return $self->_request( 'get', $self->_make_uri( '/backups', %query ) );
+}
+
+sub get_backup_by_id {
+    my ( $self, $id ) = @_;
+    return $self->_request( 'get', $self->_make_uri( '/backups/' . $id ) );
+}
+
+# INSTANCES #
+
 sub list_instances {
     my ( $self, %query ) = @_;
     return $self->_request( 'get', $self->_make_uri( '/instances', %query ) );
@@ -192,4 +220,114 @@ sub attach_iso_to_instance {
     );
 }
 
+# ISO #
+
+sub get_isos {
+    my ( $self, %query ) = @_;
+    return $self->_request( $self->_make_uri( '/iso', %query ) );
+}
+
+sub create_iso {
+    my ( $self, %body ) = @_;
+    return $self->_request( $self->_make_uri('/iso'), {%body} );
+}
+
 1;
+
+=encoding utf8
+
+=head1 Name
+
+API::Vultr
+
+=head1 Synopsis
+
+A simple, and inuitive interface to the L<Vultr Api|https://https://www.vultr.com/api> using L<LWP::UserAgent>.
+
+This does not cover the entire Vultr API, but instead intends to be very
+extendible allowing for easy contributions. Basically, I have what I need,
+if you need more feel free to add it!
+
+=head1 Example
+
+    use API::Vultr;
+    use Data::Dumper qw(Dumper);
+
+    my $vultr_api = API::Vultr->new(api_key => $ENV{VULTR_API_KEY});
+
+    my $create_response = $vultr_api->create_instance(
+        region => 'ewr',
+        plan => 'vc2-6c-16gb',
+        label => 'My Instance',
+        os_id => 215,
+        user_data => 'QmFzZTY4EVsw32WfsGGHsjKJI',
+        backups => 'enabled',
+        hostname => 'hostname'
+    );
+
+    if ($create_response->is_success) {
+        print Dumper($create_response->decoded_content);
+    }
+    else {
+        die $create_response->status_line;
+    }
+
+=head1 API
+
+=head2 ua
+
+Set, or get the L<LWP::UserAgent> associated L<API::Vultr> instance.
+
+=head2 api_key
+
+Set, or get the Vultr API key associated with the L<API::Vultr> instance.
+
+=head2 get_account_info
+
+Retrieve the account information associated with your API key.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/account/operation/get-account>
+
+=head2 get_applications
+
+Retrieve applications associated with your API key.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/application/operation/list-applications>
+
+=head2 get_backups
+
+Get a list of all backups associated with your API key.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/backup/operation/list-backups>
+
+=head2 get_backup_by_id
+
+Get information on a specific backup by its id.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/backup/operation/get-backup>
+
+=head2 list_instances
+
+=head2 create_instance
+
+=head2 get_instance_by_id
+
+=head2 delete_instance_by_id
+
+=head2 halt_instances
+
+=head2 reboot_instances
+
+=head2 start_instances
+
+=head2 get_instance_bandwidth
+
+=head2 get_instance_neighbours
+
+=head2 get_instance_iso_status
+
+=head2 detach_iso_from_instance
+
+=head2 attach_iso_to_instance
+
+=cut
