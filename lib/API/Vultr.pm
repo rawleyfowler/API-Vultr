@@ -308,26 +308,74 @@ L<Vultr API Reference|https://www.vultr.com/api/#tag/backup/operation/get-backup
 
 =head2 list_instances
 
+Get a list of all instances associated with your API key.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/list-instances>
+
 =head2 create_instance
+
+Create a Vultr instance.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/create-instance>
 
 =head2 get_instance_by_id
 
+Find an instance by its id.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/get-instance>
+
 =head2 delete_instance_by_id
+
+Delete an instance by its id.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/delete-instance>
 
 =head2 halt_instances
 
+Halt a list of instances by their ids.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/halt-instances>
+
 =head2 reboot_instances
+
+Reboot a list of instances by their ids.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/reboot-instances>
 
 =head2 start_instances
 
+Reboot a list of instances by their ids.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/start-instances>
+
 =head2 get_instance_bandwidth
+
+Get the remaining bandwidth of a given instance.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/get-instance-bandwidth>
 
 =head2 get_instance_neighbours
 
+Get a list of instances in the same location as the specified instance.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/get-instance-neighbors>
+
 =head2 get_instance_iso_status
+
+Get the ISO status for an instance.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/get-instance-iso-status>
 
 =head2 detach_iso_from_instance
 
+Detach an ISO from a specified instance.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/detach-instance-iso>
+
 =head2 attach_iso_to_instance
+
+Attach an ISO to a specified instance.
+
+L<Vultr API Reference|https://www.vultr.com/api/#tag/instances/operation/attach-instance-iso>
 
 =cut
