@@ -66,7 +66,7 @@ sub new {
 
     my $self = { %args, ua => LWP::UserAgent->new( timeout => 10 ) };
 
-    return bless( __PACKAGE__, $self );
+    return bless( $self, __PACKAGE__ );
 }
 
 # ACCOUNT #
