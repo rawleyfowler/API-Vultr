@@ -1,4 +1,5 @@
-use 5.036;
+use strict;
+use warnings;
 
 use utf8;
 use ExtUtils::MakeMaker;
