@@ -13,7 +13,7 @@ WriteMakefile(
         dynamic_config => 0,
         'meta-spec'    => { version   => 2 },
         no_index       => { directory => [ 'examples', 't' ] },
-        prereqs        => { runtime   => { requires => { perl => '5.008' } } },
+        prereqs        => { runtime   => { requires => { perl => 'v5.8.1' } } },
         resources      => {
             bugtracker =>
               { web => 'https://github.com/rawleyfowler/API-Vultr/issues' },
