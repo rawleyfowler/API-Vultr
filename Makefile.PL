@@ -25,7 +25,7 @@ WriteMakefile(
             }
         },
     },
-    Prereq_PM => {
+    PREREQ_PM => {
         'LWP::UserAgent'       => '6.72',
         'URI'                  => '5.21',
         'Test::Simple'         => '1.302195',
